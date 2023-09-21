@@ -16,11 +16,16 @@ const initializeMySqlConnector = () => {
         });
 
         console.debug("MySql Adapter Pool generated successfully");
+        console.log("process.env.DB_HOST", process.env.MY_SQL_DB_HOST);
+        console.log("process.env.DB_USER", process.env.MY_SQL_DB_USER);
+        console.log("process.env.DB_PASSWORD", process.env.MY_SQL_DB_PASSWORD);
+        console.log("process.env.DB_PORT", process.env.MY_SQL_DB_PORT);
         console.log("process.env.DB_DATABASE", process.env.MY_SQL_DB_DATABASE);
 
         pool.getConnection((err, connection) => {
             if (err) {
                 console.log("error mysql connection failed");
+                console.log(err.code);
                 throw new Error("cannot connect to database");
             }
             else {
