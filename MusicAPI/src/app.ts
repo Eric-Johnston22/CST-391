@@ -12,13 +12,12 @@ dotenv.config();
 // Set the app as the express() method
 const app = express();
 // Set the port number
-const port = 3000;
+const port = 5000;
 
-app.use('/', [albumsRouter, artistsRouter]);
 
 // Sends the res.send() string to the web page
 app.get('/', (req: Request, res: Response) => {
-res.send('Hello World from TypeScript!');
+    res.send('Hello World from TypeScript!');
 });
 
 // Parse JSON bodies
@@ -32,7 +31,7 @@ app.use(helmet());
 
 // Logs to the console the following string when the app starts running
 app.listen(port, () => {
-console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`)
 });
 
 console.log(process.env.GREETING);
@@ -42,3 +41,12 @@ if (process.env.NODE_ENV == 'development'){
     app.use(logger);
     console.log(process.env.GREETING + ' in dev mode');
 };
+
+// Application routes
+// root route
+app.get('/', (req: Request, res: Response) => {
+    res.send('<h1>Welcome to the Music API</h1>')
+});
+
+
+app.use('/', [albumsRouter, artistsRouter]);

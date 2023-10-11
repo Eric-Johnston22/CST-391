@@ -20,14 +20,14 @@ router
 
 router
     .route('/albums')
-    .get(AlbumsController.createAlbum);
+    .post(AlbumsController.createAlbum);
 
 router
     .route('/albums')
-    .get(AlbumsController.updateAlbum);
+    .put(AlbumsController.updateAlbum);
 
 router
-    .route('/albums')
-    .get(AlbumsController.deleteAlbum);
+    .route('/albums/:albumId')
+    .delete(AlbumsController.deleteAlbum);
 
 export default router;

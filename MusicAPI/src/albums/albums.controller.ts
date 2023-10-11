@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response } from "express";
 import { Album } from "./albums.model";
-import { Track } from "./../tracks/tracks.model";
+import { Track } from "../tracks/tracks.model";
 import * as AlbumDao from "./albums.dao";
 import * as TracksDao from "../tracks/tracks.dao";
 import { OkPacket } from "mysql";
@@ -99,11 +99,9 @@ export const createAlbum: RequestHandler = async (req: Request, res: Response) =
                     message: 'There was an error when writing album tracks'
                 });
             }
-        });;
+        });
 
-        res.status(200).json(
-            okPacket
-        );
+        res.status(200).json(okPacket);
     } catch (error) {
         console.error('[albums.controller][createAlbum][Error] ', error);
         res.status(500).json({

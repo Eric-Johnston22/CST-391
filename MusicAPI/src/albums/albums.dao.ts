@@ -27,7 +27,7 @@ export const readAlbumsByAlbumId = async (albumId: number) => {
 
 export const createAlbum = async (album: Album) => {
     return execute<OkPacket>(albumQueries.createAlbum,
-        [album.title, album.artist, album.year, album.image, album.description]);
+        [album.title, album.artist, album.description, album.year, album.image]);
 };
 
 export const updateAlbum = async (album: Album) => {
