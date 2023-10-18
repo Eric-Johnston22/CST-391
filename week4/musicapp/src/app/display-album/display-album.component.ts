@@ -8,4 +8,12 @@ import { Album } from '../models/Album';
 })
 export class DisplayAlbumComponent {
   @Input() album: Album | null = null;
+
+  ngOnInit() {
+    console.log("Getting data ....");
+    console.log("Tracks", this.album!.tracks);
+    this.album!.tracks.forEach(element => console.log(element.Title))
+  }
+
+
 }

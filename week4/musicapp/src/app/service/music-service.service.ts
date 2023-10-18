@@ -1,71 +1,69 @@
 import { Injectable } from '@angular/core';
-
 import exampledata from '../../data/sample-music-data.json';
-
+import { HttpClient } from '@angular/common/http';
 import { Album } from '../models/Album';
 import { Artist } from '../models/Artist';
-import { Track } from '../models/Track';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class MusicServiceService {
-  private host = "http://localhost:5000";
-  private readonly artists: Artist[] = [];
-  private readonly albums: Album[] = [];
 
-  constructor(private http: HttpClient){
+  private host = "http://localhost:5000"
+  //albums: Album[] = exampledata;
 
-  }
+  constructor(private http: HttpClient) {}
+ 
+
 
   
+  
+  public getArtists(callback: (artists: Artist[]) => void): void {
 
-  private createAlbums(): void {
-    exampledata.forEach((data: any) => {
-      if (data.artist === 'The Beatles') {
-        const tracks = data.tracks.map((trackData: any) => new Track(trackData.id, trackData.number, trackData.title, trackData.lyrics, trackData.video));
-        const album = new Album(data.id, data.title, data.artist, data.description, data.year, data.image, tracks);
-        this.albums.push(album);
-      }
+    this.http.get<Artist[]>(this.host + "/artists")
+      .subscribe((artists: Artist[]) => {
+        callback(artists);
+      });
+  }
+
+
+  public getAlbums(artistName: string, callback:(albums: Album[]) => void): void {
+    let request = this.host + `/albums/${artistName}`;
+    console.log('request', request);
+    this.http.get<Album[]>(request).subscribe((albums: Album[]) => {
+      console.log('have albums', albums);
+      callback(albums);
     });
   }
 
-  public getArtists(): Artist[] {
-    return this.artists;
+  public getAlbumsOfArtist(artistName: String, callback: (albums: Album[]) => void): void {
+
+    let request = this.host + `/albums/${artistName}`;
+    console.log("request", request);
+    this.http.get<Album[]>(request).
+      subscribe((albums: Album[]) => {
+        console.log("have albums", albums);
+        callback(albums);
+      });
   }
 
-  public getAlbums(artist: string): Album[] {
-    return this.albums;
+  public createAlbum(album: Album, callback: () => void): void {
+    // Add a new album
+    this.http.post<Album>(this.host + "/albums", album)
+      .subscribe((data) => {
+        callback();
+      });
   }
 
-  public getAlbum(artist: string, id: number): Album | undefined {
-    const album = this.albums.find((a) => a.Artist === artist && a.Id === id);
-
-    if (album) {
-      const tracks = album.Tracks.map((track) => new Track(track.Id, track.Number, track.Title, track.Lyrics, track.Video));
-      return new Album(album.Id, album.Title, album.Artist, album.Description, album.Year, album.Image, tracks);
-    }
-
-    return undefined;
+  public updateAlbum(album: Album, callback: () => void): void {
+    this.http.put<Album>(this.host + "/albums", album)
+      .subscribe((data) => {
+        callback();
+      });
   }
 
-  public createAlbum(album: Album): void {
-    this.albums.push(album);
-  }
-
-  public updateAlbum(album: Album): void {
-    const index = this.albums.findIndex((a) => a.Id === album.Id);
-
-    if (index !== -1) {
-      this.albums.splice(index, 1, album);
-    }
-  }
-
-  public deleteAlbum(id: number, artist: string): void {
-    const index = this.albums.findIndex((a) => a.Id === id);
-
-    if (index !== -1) {
-      this.albums.splice(index, 1);
-    }
+  public deleteAlbum(id: number, callback: () => void ): void {
+    this.http.delete(this.host + "/albums/" + id)
+      .subscribe((data) => {
+        callback();
+      });
   }
 }
-

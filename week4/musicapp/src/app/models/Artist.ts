@@ -2,8 +2,8 @@ export class Artist {
     private id: number = -1;
     private name: string = "";
 
-    constructor(id: number, name: string) {
-        this.id = id;
+    constructor(name: string) {
+        //this.id = id;
         this.name = name;
     }
 

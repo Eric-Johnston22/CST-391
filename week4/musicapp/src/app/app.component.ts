@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,8 @@ export class AppComponent {
   constructor(private router: Router) {
 
   }
+
+  //constructor(private http: HttpClient) { };
 
   public displayVersion() {
     alert(" Version: " + this.version);
