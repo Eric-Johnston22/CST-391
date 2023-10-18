@@ -2,5 +2,5 @@
 ## Milestone
 
 ## Activities
-- [Activity 1](./week1/MusicAPI/README.md)
-- [Activity 2](/week2/Activity2/README.md)
+- [Activity 1](./week1/MusicAPI/)
+- [Activity 2](/week2/Activity2/)
