@@ -24,3 +24,17 @@
 
 ## Part 2
 ### Screenshots
+![](./screenshots/cst-391-activity3-2a.png)
+- Initial application page
+
+![](./screenshots/cst-391-activity3-2b.jpg)
+- GCU Home Page using link in app navbar
+
+![](./screenshots/cst-391-activity3-2c.png)
+- Create Album Page
+
+![](./screenshots/cst-391-activity3-2d.png)
+- Artist List Page
+
+![](./screenshots/cst-391-activity3-2e.png)
+- About Box
