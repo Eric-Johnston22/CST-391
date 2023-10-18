@@ -7,3 +7,6 @@
 - [Activity 2](/week2/)
 - [Activity 3](./week3/)
 - [Activity 4](./week4/)
+- [Activity 5](./week5/)
+- [Activity 6](./week6/)
+- [Activity 7](./week7/)
