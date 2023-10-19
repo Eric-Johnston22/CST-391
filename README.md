@@ -1,5 +1,8 @@
 # CST-391 JavaScript Web Application Development
 ## Milestone
+- [Milestone 1](./Milestone/milestone1/)
+- [Milestone 2](./Milestone/milestone2/)
+- [Milestone 3](./Milestone/milestone3/)
 
 ## Activities
 - [Activity 0](./week1/hello%20ex/)
