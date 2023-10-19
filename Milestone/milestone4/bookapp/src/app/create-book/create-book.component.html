@@ -1,0 +1,25 @@
+<p>create-cars works!</p>
+<div class="form-container" *ngIf="!wasSubmitted">
+    <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+        <div class="form-group">
+            <label for="Title">Title</label> <input id="Title" type="text" class="form-control" aria-describedby="BookTitle"
+                placeholder="Enter the Title of the Car" required [(ngModel)]="Book.title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <textarea id="author" rows="3" class="form-control" aria-describedby="helpAuthor"
+                placeholder="Enter the book author" required [(ngModel)]="Book.author" name="author"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label> <input id="genre" type="text" class="form-control" aria-describedby="helpYear"
+                placeholder="Enter the book's genre" required [(ngModel)]="Book.genre" name="genre">
+        </div>
+        <div class="form-group">
+          <label for="published">Published</label>
+          <textarea id="published" rows="3" class="form-control" aria-describedby="helpPublished"
+              placeholder="Enter the publishing date" required [(ngModel)]="Book.published" name="published"></textarea>
+      </div>
+        <button type="submit" class=btn btn-primary>Submit</button>
+    </form>
+</div>
+<div *ngIf="wasSubmitted">Car was added successfully.</div>

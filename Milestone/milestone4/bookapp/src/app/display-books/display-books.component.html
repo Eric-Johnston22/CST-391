@@ -1,0 +1,16 @@
+<p>display-books works!</p>
+<div align="center">
+    <div class="card mb-6" *ngIf="editBook == null" style="max-width: 500px;">
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-text">Id: {{ book!.bookId }}</h5>
+                <p class="card-title">{{ book!.title }}</p>
+                <p class="card-text">Author: {{ book!.author }}</p>
+
+            </div>
+            <button type="submit" (click)="onEditBook(book!)" class=btn btn-primary>Edit</button>
+        </div>
+
+    </div>
+</div>
+<app-edit-cars *ngIf="editBook" [book]="editBook"></app-edit-cars>

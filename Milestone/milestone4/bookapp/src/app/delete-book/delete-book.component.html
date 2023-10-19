@@ -1,0 +1,12 @@
+<p>delete-book works!</p>
+<div class="form-container" *ngIf="!wasSubmitted">
+    <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+        <div class="form-group">
+            <label for="bookId">bookId</label> <input id="bookId" type="text" class="form-control" aria-describedby="bookId"
+                placeholder="Enter the Id of the Book to be deleted" required [(ngModel)]="Book.bookId" name="bookId">
+        </div>
+
+        <button type="submit" class=btn btn-primary>Submit</button>
+    </form>
+</div>
+<div *ngIf="wasSubmitted">Book was deleted successfully.</div>
