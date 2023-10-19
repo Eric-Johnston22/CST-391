@@ -10,7 +10,7 @@ const routes: Routes = [
 
   { path: 'create', component: CreateBookComponent },
 
-  { path: 'list-cars', component: ListBooksComponent },
+  { path: 'list-books', component: ListBooksComponent },
 
   { path: 'display/:id', component: DisplayBooksComponent },
 
